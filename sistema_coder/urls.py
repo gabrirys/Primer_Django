@@ -17,6 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from sistema_coder.views import saludar, saludar_hoy
+#hay que importar la funciones desde el archvio donde esta generada
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("saludo/", saludar), #agregamos la ruta
+    path("fecha_hoy/", saludar_hoy),
 ]
