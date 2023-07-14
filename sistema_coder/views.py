@@ -16,3 +16,11 @@ def saludar_hoy(request):
     saludo = f"Hoy es {dia.day}/{dia.month}"
     pagina_html = HttpResponse(saludo)
     return pagina_html
+    
+def saludar_html(request):
+    httpResponse = render(
+        request=request,
+        template_name="base.html",
+        context={}
+        )
+    return httpResponse
