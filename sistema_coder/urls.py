@@ -19,13 +19,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from sistema_coder.views import saludar, saludar_hoy, saludar_html
+from sistema_coder.views import saludar, saludar_hoy, inicio
 #hay que importar la funciones desde el archvio donde esta generada
 
 urlpatterns = [
+    path("", inicio, name="inicio"),
     path('admin/', admin.site.urls),
     path("estudios/", include("control_estudios.urls")),
-    path("saludo/", saludar), #agregamos la ruta
-    path("fecha_hoy/", saludar_hoy),
-    path("saludar_html/", saludar_html),
+    
+    #urls de pruebas
+    #path("saludo/", saludar), #agregamos la ruta
+    #path("fecha_hoy/", saludar_hoy),  
 ]

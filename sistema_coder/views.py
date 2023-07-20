@@ -17,10 +17,10 @@ def saludar_hoy(request):
     pagina_html = HttpResponse(saludo)
     return pagina_html
     
-def saludar_html(request):
+def inicio(request):
     httpResponse = render(
         request=request,
-        template_name="base.html",
+        template_name="inicio.html",
         context={}
         )
     return httpResponse
