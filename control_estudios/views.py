@@ -1,14 +1,10 @@
 from django.shortcuts import render
+from control_estudios.models import Curso, Estudiante
 
 # Create your views here.
 def listar_estudiantes(request):
     contexto = {
-            "estudiantes": [
-                {"nombre": "Emanuel", "apellido": "Dautel", "nota": 7},
-                {"nombre": "Manuela", "apellido": "Gomez", "nota": 10},
-                {"nombre": "Ivan", "apellido": "Tomasevich", "nota": 4},
-                {"nombre": "Carlos", "apellido": "Perez", "nota": 6},
-            ]
+            "estudiantes": Estudiante.objects.all(),
     }
     http_response = render(
         request=request,
@@ -19,12 +15,8 @@ def listar_estudiantes(request):
     
 def listar_cursos(request):
     contexto = {
-            "cursos": [
-                {"nombre": "Física" , "comision": 1000},
-                {"nombre": "Python", "comision": 55350},
-                {"nombre": "Redes Sociales", "comision": 2000},
-            ]
-    }
+            "cursos": Curso.objects.all(),
+            }
     http_response = render(
         request=request,
         template_name="control_estudios/lista_cursos.html",
