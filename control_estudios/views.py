@@ -53,3 +53,23 @@ def crear_curso(request):
        context={'formulario': formulario}
    )
    return http_response
+   
+#CREACIÓN DE BUSCADOR
+def buscar_cursos(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        cursos = Curso.objects.filter(comision__contains=busqueda)
+        # Ejemplo filtro avanzado
+        # cursos = Curso.objects.filter(
+        #     Q(nombre=busqueda) | Q(comision__contains=busqueda)
+        # )
+        contexto = {
+            "cursos": cursos,
+        }
+        http_response = render(
+            request=request,
+            template_name='control_estudios/lista_cursos.html',
+            context=contexto,
+        )
+        return http_response
