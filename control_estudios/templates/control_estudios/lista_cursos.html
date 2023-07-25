@@ -6,6 +6,7 @@ Lista de cursos
 
 {% block contenido %}           
 <h3>Cursos:</h3>
+<br>
 <ul>
 {% for curso in cursos %}
   <li>
@@ -13,4 +14,6 @@ Lista de cursos
   </li> 
 {% endfor %}
 </ul>
+<br>
+<a href="{% url 'crear_curso' %}">Crear nuevo curso</a>
 {% endblock contenido %}

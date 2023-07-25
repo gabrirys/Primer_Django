@@ -22,8 +22,8 @@ python manage.py createsuperuser
 ```
 
 # Superusuario de pruebas
-username:gabbo
-contraseña:abcd
+username:admin
+contraseña:sup3er123!
 
 # Usuarios normales
 ??
