@@ -8,6 +8,7 @@ listar_cursos,
 crear_curso,
 buscar_cursos,
 eliminar_curso,
+editar_curso,
 )
 
 #hay que importar la funciones desde el archvio donde esta generada
@@ -18,5 +19,5 @@ urlpatterns = [
     path("crear-curso/", crear_curso, name="crear_curso"),
     path("buscar-cursos/", buscar_cursos, name="buscar_cursos"),
     path('eliminar-curso/<int:id>/', eliminar_curso, name="eliminar_curso"),
-
+    path('editar-curso/<int:id>/', editar_curso, name="editar_curso"),
 ]

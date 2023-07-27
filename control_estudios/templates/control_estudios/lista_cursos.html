@@ -24,11 +24,16 @@ Lista de cursos
     <tr>
       <th>Nombre</th>
       <th>Comisión</th>
+      <th></th>
+      <th></th>
     </tr>
     {% for curso in cursos %}
     <tr>
     <td>{{ curso.nombre }}</td>
     <td>{{ curso.comision }}</td>
+    <td>
+      <a href="{% url 'editar_curso' curso.id %}">editar</a>
+    </td>
     <td>
       <form action="{% url 'eliminar_curso' curso.id %}" method="post">
         {% csrf_token %}
