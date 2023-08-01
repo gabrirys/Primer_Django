@@ -3,7 +3,7 @@ from control_estudios.models import Curso, Estudiante
 from control_estudios.forms import CursoFormulario
 from django.urls import reverse
 
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def listar_estudiantes(request):
@@ -17,6 +17,8 @@ def listar_estudiantes(request):
         )
     return http_response
     
+    
+@login_required   
 def listar_cursos(request):
     contexto = {
             "cursos": Curso.objects.all(),
