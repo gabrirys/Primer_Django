@@ -7,6 +7,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LogoutView
 from django.contrib.auth import login, authenticate
 
+class CustomLogoutView(LogoutView):
+   template_name = 'perfiles/logout.html'
+
 
 #REGISTRO
 def registro(request):
