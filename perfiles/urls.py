@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path
 
-# from perfiles.views import 
+from perfiles.views import registro
 
-urlpatterns = []
+urlpatterns = [
+    path("registro/", registro, name="registro"),
+]
