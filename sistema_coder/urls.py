@@ -26,6 +26,7 @@ urlpatterns = [
     path("", inicio, name="inicio"),
     path('admin/', admin.site.urls),
     path("estudios/", include("control_estudios.urls")),
+    path("perfiles/", include("perfiles.urls"))
     
     #urls de pruebas
     #path("saludo/", saludar), #agregamos la ruta
