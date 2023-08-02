@@ -1,16 +1,18 @@
 from django.db import models
-
+from django.contrib.auth.models import User # Hay que importar el modelo User
 # Create your models here.
 
 class Curso(models.Model):
     #los atributos de la clase son columnas de la tabla
     nombre = models.CharField(max_length=64) # funcion generar campo con texto con límite
     comision = models.IntegerField() # función para generar campo con números
+    creador = models.ForeignKey(User, on_delete=models.CASCADE, related_name='cursos_creados', null=True) # función para relacionar dos modelos y crear un usuario creador 
+    # on_delete=models.CASCADE esto es para que si se elimana el usuario creador, se eliminen sus creaciones
     
     #función para darle nombre correcto en el panel administrativo
     def __str__(self):
         return f"{self.nombre}, {self.comision}"
-        
+
         
 class Estudiante(models.Model):
     apellido = models.CharField(max_length=256)

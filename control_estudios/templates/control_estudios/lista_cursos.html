@@ -23,6 +23,7 @@ Lista de cursos
     <tr>
       <th>Nombre</th>
       <th>Comisión</th>
+      <th>Creador</th>
       <th></th>
       <th></th>
     </tr>
@@ -30,6 +31,7 @@ Lista de cursos
     <tr>
     <td>{{ curso.nombre }}</td>
     <td>{{ curso.comision }}</td>
+    <td>{{ curso.creador }}</td>
     <td>
       <a href="{% url 'editar_curso' curso.id %}">editar</a>
     </td>

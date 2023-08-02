@@ -41,7 +41,8 @@ def crear_curso(request):
            data = formulario.cleaned_data  # es un diccionario
            nombre = data["nombre"]
            comision = data["comision"]
-           curso = Curso(nombre=nombre, comision=comision)
+           creador = request.user # Agregar el atributo del creador
+           curso = Curso(nombre=nombre, comision=comision, creador=creador)
            curso.save()  # Lo guardan en la Base de datos
 
            # Redirecciono al usuario a la lista de cursos
