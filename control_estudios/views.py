@@ -18,7 +18,7 @@ def listar_estudiantes(request):
     return http_response
     
     
-@login_required   
+
 def listar_cursos(request):
     contexto = {
             "cursos": Curso.objects.all(),
@@ -32,6 +32,7 @@ def listar_cursos(request):
     
     
 #CREACIÓN DE FORMULARIO
+@login_required  
 def crear_curso(request):
    if request.method == "POST":
    #Creo un objeto formulario con la data que envió el usuario
@@ -77,7 +78,8 @@ def buscar_cursos(request):
         )
         return http_response
         
-#ELIMINAR CURSO       
+#ELIMINAR CURSO
+@login_required
 def eliminar_curso(request, id):
     #obtienes el curso por meddio de su id
     curso = Curso.objects.get(id=id)
@@ -90,26 +92,28 @@ def eliminar_curso(request, id):
         
 
 #EDITAR CURSOS
+@login_required
 def editar_curso(request, id):
-   curso = Curso.objects.get(id=id)
-   if request.method == "POST":
-       formulario = CursoFormulario(request.POST)
+    curso = Curso.objects.get(id=id)
+    if request.method == "POST":
+        formulario = CursoFormulario(request.POST)
 
-       if formulario.is_valid():
-           data = formulario.cleaned_data
-           curso.nombre = data['nombre']
-           curso.comision = data['comision']
-           curso.save()
-           url_exitosa = reverse('lista_cursos')
-           return redirect(url_exitosa)
-   else:  # GET
-       inicial = {
-           'nombre': curso.nombre,
-           'comision': curso.comision,
-       }
-       formulario = CursoFormulario(initial=inicial)
-   return render(
-       request=request,
-       template_name='control_estudios/formulario_curso.html',
-       context={'formulario': formulario},
-   )
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            curso.nombre = data['nombre']
+            curso.comision = data['comision']
+            curso.save()
+
+            url_exitosa = reverse('lista_cursos')
+            return redirect(url_exitosa)
+    else:  # GET
+        inicial = {
+            'nombre': curso.nombre,
+            'comision': curso.comision,
+        }
+        formulario = CursoFormulario(initial=inicial)
+    return render(
+        request=request,
+        template_name='control_estudios/formulario_curso.html',
+        context={'formulario': formulario},
+    )
