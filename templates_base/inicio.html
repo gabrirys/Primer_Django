@@ -5,5 +5,5 @@ CoderHouse
 {% endblock titulo %}
 
 {% block contenido %}           
-<h1>Bienvenidos a CoderHouse</h1>
+<h1>Bienvenidos {{ user.get_full_name }} </h1>
 {% endblock contenido %}

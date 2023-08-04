@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>{% block titulo %}{% endblock titulo %}</title>
+        {% block titulo %}{% endblock titulo %}
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}" />
         <!-- Bootstrap icons-->
@@ -28,11 +28,25 @@
                 <a class="navbar-brand" href="{% url 'lista_cursos' %}">Cursos</a>
                 <a class="navbar-brand" href="{% url 'lista_estudiantes' %}">Estudiantes</a>
                 {% if user.is_authenticated %}
-                    <a class="btn btn-warning" href="{% url 'logout' %}">Cierre sesión</a>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div style="display: inline-flex;">
+                            <span>{{ user.username }}</span>
+                        </div>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'editar_perfil' %}">Editar mis datos</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}"><strong>Cerrar Sesión</strong></a>
+                        </li>
+                    </ul>
+                </div>
                 {% else %}
-                    <a class="btn btn-primary" href="{% url 'login' %}">Inicio sesión</a>
-                    <a class="btn btn-success" href="{% url 'registro' %}">Registro</a>
-                {% endif %} 
+                <a class="btn btn-primary" href="{% url 'login' %}">Inicio sesión</a>
+                <a class="btn btn-success" href="{% url 'registro' %}">Registro</a>
+                {% endif %}
             </div>
         </nav>
 
@@ -47,9 +61,9 @@
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
                         <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">Ayuda</a></li>
+                            <li class="list-inline-item"><a href="https://ayuda.coderhouse.com/">Ayuda</a></li>
                             <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contacto</a></li>
+                            <li class="list-inline-item"><a href="https://ayuda.coderhouse.com/">Contacto</a></li>
                       
                         </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Curso de Python - CoderHouse.</p>
@@ -57,7 +71,7 @@
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
                             <li class="list-inline-item me-4">
-                                <a href="https://www.facebookcom/coderhouse"><i class="bi-facebook fs-3"></i></a>
+                                <a href="https://www.facebook.com/coderhouse"><i class="bi-facebook fs-3"></i></a>
                             </li>
                             <li class="list-inline-item me-4">
                                 <a href="https://www.twitter.com/coderhouse"><i class="bi-twitter fs-3"></i></a>
