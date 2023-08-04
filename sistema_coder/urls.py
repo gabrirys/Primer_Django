@@ -19,6 +19,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+# estas dor importaciones para subir imagenes
+
 from sistema_coder.views import saludar, saludar_hoy, inicio
 #hay que importar la funciones desde el archvio donde esta generada
 
@@ -32,3 +36,6 @@ urlpatterns = [
     #path("saludo/", saludar), #agregamos la ruta
     #path("fecha_hoy/", saludar_hoy),  
 ]
+
+# Agregamos esto al final, para incluir los archivos media: imagenes, etc
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
